@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پورتفولیو - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        purple: {
+                            950: '#1a0a2e',
+                            900: '#2d1b4e',
+                            800: '#3e2766',
+                            700: '#4f337e',
+                            600: '#6b46c1',
+                            500: '#8b5cf6',
+                            400: '#a78bfa',
+                            300: '#c4b5fd',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-black text-white">
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="fixed inset-0 bg-black z-50 flex items-center justify-center">
+        <div class="text-center">
+            <!-- Animated Logo/Icon -->
+            <div class="relative mb-8">
+                <div class="w-20 h-20 mx-auto relative">
+                    <!-- Outer rotating ring -->
+                    <div class="absolute inset-0 border-4 border-purple-600/30 rounded-full"></div>
+                    <div class="absolute inset-0 border-4 border-transparent border-t-purple-600 rounded-full animate-spin"></div>
+                    
+                    <!-- Inner pulsing circle -->
+                    <div class="absolute inset-2 bg-gradient-to-br from-purple-600 to-purple-800 rounded-full animate-pulse"></div>
+                    
+                    <!-- Center icon -->
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <img src="images/net.svg" alt="NET" width="32" height="32">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Loading Text -->
+            <div class="space-y-2">
+                <h2 class="text-2xl font-bold text-white">
+                    <span class="fa-text">حسین</span>
+                    <span class="en-text">Hossein</span>
+                </h2>
+                <p class="text-purple-400 text-sm">
+                    <span class="fa-text">توسعه‌دهنده فول‌استک</span>
+                    <span class="en-text">Full Stack Developer</span>
+                </p>
+            </div>
+            
+            <!-- Loading dots -->
+            <div class="flex justify-center space-x-1 mt-6">
+                <div class="w-2 h-2 bg-purple-600 rounded-full animate-bounce" style="animation-delay: 0s;"></div>
+                <div class="w-2 h-2 bg-purple-600 rounded-full animate-bounce" style="animation-delay: 0.1s;"></div>
+                <div class="w-2 h-2 bg-purple-600 rounded-full animate-bounce" style="animation-delay: 0.2s;"></div>
+            </div>
+            
+            <!-- Loading percentage -->
+            <div class="mt-6">
+                <div class="w-48 h-1 bg-purple-900/30 rounded-full mx-auto overflow-hidden">
+                    <div id="loadingBar" class="h-full bg-gradient-to-r from-purple-600 to-purple-400 rounded-full transition-all duration-300 ease-out" style="width: 0%"></div>
+                </div>
+                <p id="loadingText" class="text-purple-300 text-xs mt-2">
+                    <span class="fa-text">در حال بارگذاری...</span>
+                    <span class="en-text">Loading...</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Navigation -->
+    <nav>
+        <div class="bg-purple-950/90 backdrop-blur-lg rounded-full px-6 py-3 shadow-lg border border-purple-800/50">
+            <div class="flex items-center gap-1">
+                <!-- Home -->
+                <a href="#home" class="nav-item active" data-section="home">
+                    <div class="nav-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9,22 9,12 15,12 15,22"></polyline>
+                        </svg>
+                    </div>
+                    <span class="nav-text">
+                        <span class="fa-text">خانه</span>
+                        <span class="en-text">Home</span>
+                    </span>
+                </a>
+
+                <!-- Contact -->
+                <a href="#contact" class="nav-item" data-section="contact">
+                    <div class="nav-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </div>
+                    <span class="nav-text">
+                        <span class="fa-text">تماس</span>
+                        <span class="en-text">Contact</span>
+                    </span>
+                </a>
+
+                <!-- Skills -->
+                <a href="#skills" class="nav-item" data-section="skills">
+                    <div class="nav-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                    </div>
+                    <span class="nav-text">
+                        <span class="fa-text">مهارت‌ها</span>
+                        <span class="en-text">Skills</span>
+                    </span>
+                </a>
+
+                <!-- Projects -->
+                <a href="#projects" class="nav-item" data-section="projects">
+                    <div class="nav-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                    </div>
+                    <span class="nav-text">
+                        <span class="fa-text">پروژه‌ها</span>
+                        <span class="en-text">Projects</span>
+                    </span>
+                </a>
+
+
+                <!-- Language Toggle -->
+                <button id="langToggle" class="nav-item lang-toggle">
+                    <div class="nav-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                        </svg>
+                    </div>
+                    <span class="nav-text lang-text">EN</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center px-4 pt-24 pb-20 md:pb-24">
+        <div class="container mx-auto">
+            <div class="flex flex-col lg:flex-row items-center justify-center gap-16">
+                <!-- Profile Image with Icons -->
+                <div class="relative">
+                    <div class="relative w-64 h-64 lg:w-80 lg:h-80">
+                        <!-- Programming Icons -->
+                        <div class="icon-circle" style="--angle: 0deg; --delay: 0s;">
+                            <div class="text-purple-400 bg-purple-950/50 p-3 rounded-full backdrop-blur-sm border border-purple-800/30">
+                                <img src="images/csharp.svg" alt="C#" width="24" height="24">
+                            </div>
+                        </div>
+                        <div class="icon-circle" style="--angle: 45deg; --delay: 0.2s;">
+                            <div class="text-purple-300 bg-purple-950/50 p-3 rounded-full backdrop-blur-sm border border-purple-800/30">
+                                <img src="images/css.svg" alt="CSS" width="24" height="24">
+                            </div>
+                        </div>
+                        <div class="icon-circle" style="--angle: 90deg; --delay: 0.4s;">
+                            <div class="text-purple-500 bg-purple-950/50 p-3 rounded-full backdrop-blur-sm border border-purple-800/30">
+                                <img src="images/js.svg" alt="JavaScript" width="24" height="24">
+                            </div>
+                        </div>
+                        <div class="icon-circle" style="--angle: 135deg; --delay: 0.6s;">
+                            <div class="text-purple-400 bg-purple-950/50 p-3 rounded-full backdrop-blur-sm border border-purple-800/30">
+                                <img src="images/net.svg" alt="HTML" width="24" height="24">
+                            </div>
+                        </div>
+                        <div class="icon-circle" style="--angle: 180deg; --delay: 0.8s;">
+                            <div class="text-purple-300 bg-purple-950/50 p-3 rounded-full backdrop-blur-sm border border-purple-800/30">
+                                <img src="images/sql.svg" alt="SQL" width="24" height="24">
+                            </div>
+                        </div>
+                        <div class="icon-circle" style="--angle: 225deg; --delay: 1s;">
+                            <div class="text-purple-500 bg-purple-950/50 p-3 rounded-full backdrop-blur-sm border border-purple-800/30">
+                                <img src="images/bootstarp.svg" alt="Bootstrap" width="24" height="24">
+                            </div>
+                        </div>
+                        <div class="icon-circle" style="--angle: 270deg; --delay: 1.2s;">
+                            <div class="text-purple-400 bg-purple-950/50 p-3 rounded-full backdrop-blur-sm border border-purple-800/30">
+                                <img src="images/tailwind.svg" alt="Tailwind CSS" width="24" height="24">
+                            </div>
+                        </div>
+                        <div class="icon-circle" style="--angle: 315deg; --delay: 1.4s;">
+                            <div class="text-purple-300 bg-purple-950/50 p-3 rounded-full backdrop-blur-sm border border-purple-800/30">
+                                <img src="images/html.svg" alt="Web Development" width="24" height="24">
+                            </div>
+                        </div>
+
+                        <!-- Profile Image Placeholder -->
+                        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                            <div class="w-48 h-48 lg:w-56 lg:h-56 rounded-full overflow-hidden border-4 border-purple-600 shadow-2xl shadow-purple-900/50 bg-gradient-to-br from-purple-900 to-purple-950 flex items-center justify-center">
+                                <img src="images/me.png" alt="Profile" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text Content -->
+                <div class="text-center lg:text-start max-w-2xl">
+                    <p class="text-purple-400 mb-2">
+                        <span class="fa-text">سلام، من</span>
+                        <span class="en-text">Hi, I'm</span>
+                    </p>
+                    <h1 class="text-4xl lg:text-5xl font-bold text-white mb-4">
+                        <span class="fa-text">حسین</span>
+                        <span class="en-text">Hossein</span>
+                    </h1>
+                    <h2 class="text-2xl lg:text-3xl text-purple-300 mb-6">
+                        <span class="fa-text">توسعه‌دهنده فول‌استک</span>
+                        <span class="en-text">Full Stack Developer</span>
+                    </h2>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        <span class="fa-text">من یک توسعه‌دهنده با اشتیاق هستم که برنامه‌های وب زیبا و کاربردی می‌سازم. به تکنولوژی‌های جدید علاقه‌مندم و دوست دارم چیزهای جدید یاد بگیرم.</span>
+                        <span class="en-text">I am a passionate developer who builds beautiful and functional web applications. I love new technologies and enjoy learning new things.</span>
+                    </p>
+
+                    <!-- Social Links -->
+                    <div class="flex items-center gap-4 justify-center lg:justify-start mb-8">
+                        <a href="https://github.com/hossein86mirza" target="_blank" class="text-gray-400 hover:text-purple-400 transition-colors p-2 hover:bg-purple-900/20 rounded-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                                <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                            </svg>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" class="text-gray-400 hover:text-purple-400 transition-colors p-2 hover:bg-purple-900/20 rounded-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </a>
+                        <a href="mailto:hossein86mirza@gmail.com" class="text-gray-400 hover:text-purple-400 transition-colors p-2 hover:bg-purple-900/20 rounded-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+
+                    <a href="#projects" class="inline-block px-8 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors shadow-lg shadow-purple-900/50">
+                        <span class="fa-text">مشاهده پروژه‌ها</span>
+                        <span class="en-text">View Projects</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 bg-gradient-to-b from-black to-purple-950/20">
+        <div class="container mx-auto max-w-7xl">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold text-white mb-4">
+                    <span class="fa-text">تماس با من</span>
+                    <span class="en-text">Contact Me</span>
+                </h2>
+                <p class="text-gray-400">
+                    <span class="fa-text">بیایید با هم در ارتباط باشیم</span>
+                    <span class="en-text">Let's get in touch</span>
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Contact Info -->
+                <div class="space-y-8">
+                    <div class="bg-purple-950/30 border border-purple-800/30 rounded-lg p-8">
+                        <h3 class="text-xl font-semibold text-purple-400 mb-6">
+                            <span class="fa-text">اطلاعات تماس</span>
+                            <span class="en-text">Contact Information</span>
+                        </h3>
+                        
+                        <div class="space-y-6">
+                            <!-- Email -->
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-purple-900/30 border border-purple-700/50 rounded-lg flex items-center justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-gray-300 font-medium">Email</p>
+                                    <p class="text-purple-300">hossein86mirza@gmail.com</p>
+                                </div>
+                            </div>
+
+                            <!-- Phone -->
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-purple-900/30 border border-purple-700/50 rounded-lg flex items-center justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-gray-300 font-medium">
+                                        <span class="fa-text">تلفن</span>
+                                        <span class="en-text">Phone</span>
+                                    </p>
+                                    <a href="tel:09214423079" class="fa-text text-purple-300">۰۹۲۱۴۴۲۳۰۷۹</a>
+                                    <a href="tel:09214423079" class="en-text text-purple-300">09214423079</a>
+                                </div>
+                            </div>
+
+                            <!-- Location -->
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-purple-900/30 border border-purple-700/50 rounded-lg flex items-center justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-gray-300 font-medium">
+                                        <span class="fa-text">موقعیت</span>
+                                        <span class="en-text">Location</span>
+                                    </p>
+                                    <p class="text-purple-300">
+                                        <span class="fa-text">تهران، ایران</span>
+                                        <span class="en-text">Tehran, Iran</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="bg-purple-950/30 border border-purple-800/30 rounded-lg p-8">
+                        <h3 class="text-xl font-semibold text-purple-400 mb-6">
+                            <span class="fa-text">شبکه‌های اجتماعی</span>
+                            <span class="en-text">Social Media</span>
+                        </h3>
+                        <div class="flex gap-4">
+                            <a href="https://github.com/hossein86mirza" target="_blank" class="w-12 h-12 bg-purple-900/30 border border-purple-700/50 rounded-lg flex items-center justify-center hover:bg-purple-800/50 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                                    <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                                </svg>
+                            </a>
+                            <a href="https://linkedin.com" target="_blank" class="w-12 h-12 bg-purple-900/30 border border-purple-700/50 rounded-lg flex items-center justify-center hover:bg-purple-800/50 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                    <rect x="2" y="9" width="4" height="12"></rect>
+                                    <circle cx="4" cy="4" r="2"></circle>
+                                </svg>
+                            </a>
+                            <a href="https://twitter.com" target="_blank" class="w-12 h-12 bg-purple-900/30 border border-purple-700/50 rounded-lg flex items-center justify-center hover:bg-purple-800/50 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="bg-purple-950/30 border border-purple-800/30 rounded-lg p-8">
+                    <h3 class="text-xl font-semibold text-purple-400 mb-6">
+                        <span class="fa-text">ارسال پیام</span>
+                        <span class="en-text">Send Message</span>
+                    </h3>
+                    
+                    <form action="https://formspree.io/f/myzwydeq" method="POST" class="space-y-6" id="contactForm">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="name" class="block text-gray-300 text-sm font-medium mb-2">
+                                    <span class="fa-text">نام</span>
+                                    <span class="en-text">Name</span>
+                                </label>
+                                <input type="text" id="name" name="name" required class="w-full px-4 py-3 bg-purple-900/30 border border-purple-700/50 rounded-lg text-white placeholder-gray-400 focus:border-purple-500 focus:outline-none transition-colors" placeholder="نام شما">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-300 text-sm font-medium mb-2">
+                                    <span class="fa-text">ایمیل</span>
+                                    <span class="en-text">Email</span>
+                                </label>
+                                <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-purple-900/30 border border-purple-700/50 rounded-lg text-white placeholder-gray-400 focus:border-purple-500 focus:outline-none transition-colors" placeholder="email@example.com">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="subject" class="block text-gray-300 text-sm font-medium mb-2">
+                                <span class="fa-text">موضوع</span>
+                                <span class="en-text">Subject</span>
+                            </label>
+                            <input type="text" id="subject" name="subject" required class="w-full px-4 py-3 bg-purple-900/30 border border-purple-700/50 rounded-lg text-white placeholder-gray-400 focus:border-purple-500 focus:outline-none transition-colors" placeholder="موضوع پیام">
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-gray-300 text-sm font-medium mb-2">
+                                <span class="fa-text">پیام</span>
+                                <span class="en-text">Message</span>
+                            </label>
+                            <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 bg-purple-900/30 border border-purple-700/50 rounded-lg text-white placeholder-gray-400 focus:border-purple-500 focus:outline-none transition-colors resize-none" placeholder="پیام خود را بنویسید..."></textarea>
+                        </div>
+                        
+                        <!-- Success/Error Messages -->
+                        <div id="formMessages" class="hidden">
+                            <div id="successMessage" class="hidden bg-green-900/30 border border-green-700/50 text-green-300 px-4 py-3 rounded-lg">
+                                <span class="fa-text">پیام شما با موفقیت ارسال شد!</span>
+                                <span class="en-text">Your message has been sent successfully!</span>
+                            </div>
+                            <div id="errorMessage" class="hidden bg-red-900/30 border border-red-700/50 text-red-300 px-4 py-3 rounded-lg">
+                                <span class="fa-text">خطا در ارسال پیام. لطفاً دوباره تلاش کنید.</span>
+                                <span class="en-text">Error sending message. Please try again.</span>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" id="submitBtn" class="w-full px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors font-medium">
+                            <span id="submitText">
+                                <span class="fa-text">ارسال پیام</span>
+                                <span class="en-text">Send Message</span>
+                            </span>
+                            <span id="loadingText" class="hidden">
+                                <span class="fa-text">در حال ارسال...</span>
+                                <span class="en-text">Sending...</span>
+                            </span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-4 bg-gradient-to-b from-black to-purple-950/20">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold text-white mb-4">
+                    <span class="fa-text">مهارت‌های من</span>
+                    <span class="en-text">My Skills</span>
+                </h2>
+                <p class="text-gray-400">
+                    <span class="fa-text">تکنولوژی‌ها و ابزارهایی که با آن‌ها کار می‌کنم</span>
+                    <span class="en-text">Technologies and tools I work with</span>
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Frontend -->
+                <div class="bg-purple-950/30 border border-purple-800/30 rounded-lg p-6 hover:border-purple-600/50 transition-colors">
+                    <h3 class="text-xl font-semibold text-purple-400 mb-6 text-center">
+                        <span class="fa-text">فرانت‌اند</span>
+                        <span class="en-text">Frontend</span>
+                    </h3>
+                    <div class="flex flex-wrap gap-2 justify-center">
+                        <span class="px-3 py-1 bg-purple-900/30 border border-purple-700/50 text-purple-300 rounded-full text-sm">HTML/CSS</span>
+                        <span class="px-3 py-1 bg-purple-900/30 border border-purple-700/50 text-purple-300 rounded-full text-sm">Bootstrap</span>
+                        <span class="px-3 py-1 bg-purple-900/30 border border-purple-700/50 text-purple-300 rounded-full text-sm">JavaScript</span>
+                        <span class="px-3 py-1 bg-purple-900/30 border border-purple-700/50 text-purple-300 rounded-full text-sm">jQuery</span>
+                    </div>
+                </div>
+
+                <!-- Backend -->
+                <div class="bg-purple-950/30 border border-purple-800/30 rounded-lg p-6 hover:border-purple-600/50 transition-colors">
+                    <h3 class="text-xl font-semibold text-purple-400 mb-6 text-center">
+                        <span class="fa-text">بک‌اند</span>
+                        <span class="en-text">Backend</span>
+                    </h3>
+                    <div class="flex flex-wrap gap-2 justify-center">
+                        <span class="px-3 py-1 bg-purple-900/30 border border-purple-700/50 text-purple-300 rounded-full text-sm">C#</span>
+                        <span class="px-3 py-1 bg-purple-900/30 border border-purple-700/50 text-purple-300 rounded-full text-sm">Asp.net</span>
+                        <span class="px-3 py-1 bg-purple-900/30 border border-purple-700/50 text-purple-300 rounded-full text-sm">Asp.net MVC</span>
+                        <span class="px-3 py-1 bg-purple-900/30 border border-purple-700/50 text-purple-300 rounded-full text-sm">Asp.net Core</span>
+                        <span class="px-3 py-1 bg-purple-900/30 border border-purple-700/50 text-purple-300 rounded-full text-sm">Entity Framework</span>
+                        <span class="px-3 py-1 bg-purple-900/30 border border-purple-700/50 text-purple-300 rounded-full text-sm">SQL Server</span>
+                    </div>
+                </div>
+
+                <!-- Tools -->
+                <div class="bg-purple-950/30 border border-purple-800/30 rounded-lg p-6 hover:border-purple-600/50 transition-colors">
+                    <h3 class="text-xl font-semibold text-purple-400 mb-6 text-center">
+                        <span class="fa-text">ابزارها و دیگر</span>
+                        <span class="en-text">Tools & Others</span>
+                    </h3>
+                    <div class="flex flex-wrap gap-2 justify-center">
+                        <span class="px-3 py-1 bg-purple-900/30 border border-purple-700/50 text-purple-300 rounded-full text-sm">Git</span>
+                        <span class="px-3 py-1 bg-purple-900/30 border border-purple-700/50 text-purple-300 rounded-full text-sm">GitHub</span>
+                        <span class="px-3 py-1 bg-purple-900/30 border border-purple-700/50 text-purple-300 rounded-full text-sm">Sqlserver</span>
+                        <span class="px-3 py-1 bg-purple-900/30 border border-purple-700/50 text-purple-300 rounded-full text-sm">Visual Studio</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-4 bg-black">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold text-white mb-4">
+                    <span class="fa-text">پروژه‌های انجام شده</span>
+                    <span class="en-text">Completed Projects</span>
+                </h2>
+                <p class="text-gray-400">
+                    <span class="fa-text">نمونه‌ای از کارهای من</span>
+                    <span class="en-text">A sample of my work</span>
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projectsGrid">
+                <!-- Projects will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-b from-purple-950/20 to-black border-t border-purple-900/30 pt-8 pb-8 px-4">
+        <div class="container mx-auto max-w-6xl">
+            <div class="border-t border-purple-900/30 pt-8">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-gray-400 text-sm">
+                    <p>
+                        © <span id="currentYear"></span> 
+                        <span class="fa-text">تمامی حقوق محفوظ است</span>
+                        <span class="en-text">All rights reserved</span>
+                    </p>
+                    <p class="flex items-center gap-2">
+                        <span class="fa-text">ساخته شده با</span>
+                        <span class="en-text">Made with</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-purple-400">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                        <span class="fa-text">توسط حسین</span>
+                        <span class="en-text">by Hossein</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

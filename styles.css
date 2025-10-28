@@ -1,0 +1,434 @@
+/* Custom Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+/* Language Switching */
+.en-text {
+    display: none;
+}
+
+body[dir="ltr"] .fa-text {
+    display: none;
+}
+
+body[dir="ltr"] .en-text {
+    display: inline;
+}
+
+/* Ensure proper display for both languages */
+.fa-text {
+    display: inline;
+}
+
+body[dir="rtl"] .en-text {
+    display: none;
+}
+
+body[dir="rtl"] .fa-text {
+    display: inline;
+}
+
+/* Floating Navigation Styles */
+nav {
+    position: fixed;
+    top: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 50;
+}
+
+nav .flex {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    justify-content: center;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    text-decoration: none;
+    color: #a78bfa;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    white-space: nowrap;
+}
+
+.nav-item:hover {
+    color: #c4b5fd;
+    background-color: rgba(196, 181, 253, 0.1);
+}
+
+.nav-item.active {
+    color: white;
+    background-color: #6b46c1;
+}
+
+.nav-item.active .nav-icon {
+    color: white;
+}
+
+.nav-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    color: #a78bfa;
+    transition: color 0.3s ease;
+}
+
+.nav-item:hover .nav-icon {
+    color: #c4b5fd;
+}
+
+.nav-text {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.lang-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.lang-toggle:hover {
+    background-color: rgba(196, 181, 253, 0.1);
+}
+
+/* Responsive adjustments for floating nav */
+@media (max-width: 768px) {
+    /* Mobile navigation at bottom */
+    nav {
+        top: auto !important;
+        bottom: 1rem !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: calc(100% - 1rem);
+        max-width: 500px;
+    }
+    
+    nav .bg-purple-950\/90 {
+        padding: 0.75rem 1rem !important;
+        border-radius: 2rem !important;
+    }
+    
+    .nav-item {
+        padding: 8px 6px;
+        gap: 4px;
+        flex: 1;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .nav-text {
+        font-size: 10px;
+        margin-top: 2px;
+    }
+    
+    .nav-icon {
+        width: 18px;
+        height: 18px;
+    }
+    
+    /* Mobile icon animations */
+    .icon-circle:nth-child(1) { transform: translate(calc(-50% + 130px), -50%); }
+    .icon-circle:nth-child(2) { transform: translate(calc(-50% + 92px), calc(-50% + 92px)); }
+    .icon-circle:nth-child(3) { transform: translate(-50%, calc(-50% + 130px)); }
+    .icon-circle:nth-child(4) { transform: translate(calc(-50% - 92px), calc(-50% + 92px)); }
+    .icon-circle:nth-child(5) { transform: translate(calc(-50% - 130px), -50%); }
+    .icon-circle:nth-child(6) { transform: translate(calc(-50% - 92px), calc(-50% - 92px)); }
+    .icon-circle:nth-child(7) { transform: translate(-50%, calc(-50% - 130px)); }
+    .icon-circle:nth-child(8) { transform: translate(calc(-50% + 92px), calc(-50% - 92px)); }
+}
+
+@media (max-width: 640px) {
+    /* Extra small screens - icons above text */
+    .nav-item {
+        padding: 6px 4px;
+        gap: 2px;
+        flex: 1;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .nav-text {
+        display: inline;
+        font-size: 9px;
+        margin-top: 1px;
+    }
+    
+    .nav-icon {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+/* Icon Circle Animation */
+.icon-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 10;
+    transition: transform 0.3s ease;
+}
+
+/* Calculate positions for each icon */
+.icon-circle:nth-child(1) { 
+    transform: translate(calc(-50% + 160px), -50%); 
+}
+.icon-circle:nth-child(1):hover {
+    transform: translate(calc(-50% + 160px), calc(-50% - 20px)); 
+}
+
+.icon-circle:nth-child(2) { 
+    transform: translate(calc(-50% + 113px), calc(-50% + 113px)); 
+}
+.icon-circle:nth-child(2):hover {
+    transform: translate(calc(-50% + 113px), calc(-50% + 93px)); 
+}
+
+.icon-circle:nth-child(3) { 
+    transform: translate(-50%, calc(-50% + 160px)); 
+}
+.icon-circle:nth-child(3):hover {
+    transform: translate(-50%, calc(-50% + 140px)); 
+}
+
+.icon-circle:nth-child(4) { 
+    transform: translate(calc(-50% - 113px), calc(-50% + 113px)); 
+}
+.icon-circle:nth-child(4):hover {
+    transform: translate(calc(-50% - 113px), calc(-50% + 93px)); 
+}
+
+.icon-circle:nth-child(5) { 
+    transform: translate(calc(-50% - 160px), -50%); 
+}
+.icon-circle:nth-child(5):hover {
+    transform: translate(calc(-50% - 160px), calc(-50% - 20px)); 
+}
+
+.icon-circle:nth-child(6) { 
+    transform: translate(calc(-50% - 113px), calc(-50% - 113px)); 
+}
+.icon-circle:nth-child(6):hover {
+    transform: translate(calc(-50% - 113px), calc(-50% - 133px)); 
+}
+
+.icon-circle:nth-child(7) { 
+    transform: translate(-50%, calc(-50% - 160px)); 
+}
+.icon-circle:nth-child(7):hover {
+    transform: translate(-50%, calc(-50% - 180px)); 
+}
+
+.icon-circle:nth-child(8) { 
+    transform: translate(calc(-50% + 113px), calc(-50% - 113px)); 
+}
+.icon-circle:nth-child(8):hover {
+    transform: translate(calc(-50% + 113px), calc(-50% - 133px)); 
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Ensure icon circles are visible */
+.icon-circle > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* Smooth transitions */
+a, button {
+    transition: all 0.3s ease;
+}
+
+/* Mobile menu animation */
+#mobileMenu {
+    transition: max-height 0.3s ease;
+}
+
+#mobileMenu.show {
+    display: flex !important;
+}
+
+/* Card hover effects */
+.project-card {
+    transition: all 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-card img {
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover img {
+    transform: scale(1.1);
+}
+
+/* Backdrop blur support */
+@supports (backdrop-filter: blur(10px)) {
+    header {
+        backdrop-filter: blur(10px);
+    }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #6b46c1;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #8b5cf6;
+}
+
+/* Loading Screen Styles */
+#loadingScreen {
+    background: linear-gradient(135deg, #000000 0%, #1a0a2e 50%, #000000 100%);
+    backdrop-filter: blur(10px);
+}
+
+#loadingScreen .animate-spin {
+    animation: spin 1s linear infinite;
+}
+
+#loadingScreen .animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+#loadingScreen .animate-bounce {
+    animation: bounce 1s infinite;
+}
+
+/* Custom loading animations */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.05);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Loading screen fade out animation */
+#loadingScreen.fade-out {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+}
+
+/* Loading bar animation */
+#loadingBar {
+    background: linear-gradient(90deg, #6b46c1 0%, #8b5cf6 50%, #a78bfa 100%);
+    background-size: 200% 100%;
+    animation: shimmer 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Responsive loading screen */
+@media (max-width: 768px) {
+    #loadingScreen .w-20 {
+        width: 4rem;
+        height: 4rem;
+    }
+    
+    #loadingScreen .w-48 {
+        width: 12rem;
+    }
+    
+    #loadingScreen h2 {
+        font-size: 1.5rem;
+    }
+    
+    #loadingScreen p {
+        font-size: 0.875rem;
+    }
+}
+
+/* Mobile bottom navigation spacing */
+@media (max-width: 768px) {
+    /* Add bottom padding to sections to avoid overlap with bottom nav */
+    section {
+        padding-bottom: 6rem;
+    }
+    
+    /* Adjust hero section specifically */
+    #home {
+        padding-bottom: 7rem;
+    }
+    
+    /* Footer spacing */
+    footer {
+        margin-bottom: 5rem;
+    }
+}
+
